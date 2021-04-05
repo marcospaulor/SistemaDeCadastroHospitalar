@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package sistemadecadastrohospitalar.Login;
+package sistemadecadastrohospitalar.LoginPage;
 
-import sistemadecadastrohospitalar.Login.Login;
+import sistemadecadastrohospitalar.LoginPage.Login;
 
 /**
  *
@@ -54,7 +54,7 @@ public class CreateAcc extends javax.swing.JFrame {
 
         functionCB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Administração", "Médico" }));
 
-        usernameLabel.setText("Username");
+        usernameLabel.setText("Usuário");
 
         passwordLabel.setText("Senha");
 
