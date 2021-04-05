@@ -132,11 +132,17 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Entrar"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="loginBtnActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="createAccBtn">
           <Properties>
             <Property name="text" type="java.lang.String" value="Criar Conta"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="createAccBtnActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
