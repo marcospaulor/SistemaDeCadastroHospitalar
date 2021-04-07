@@ -35,7 +35,7 @@ public class CreateDiagnosis extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jFTFTemperature = new javax.swing.JFormattedTextField();
-        jFormattedTextField2 = new javax.swing.JFormattedTextField();
+        jFTFBloodPressure = new javax.swing.JFormattedTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTASymptoms = new javax.swing.JTextArea();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -74,21 +74,24 @@ public class CreateDiagnosis extends javax.swing.JFrame {
         jFTFTemperature.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
 
         try {
-            jFormattedTextField2.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("## / ##")));
+            jFTFBloodPressure.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("## / ##")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        jFormattedTextField2.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jFTFBloodPressure.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
 
         jTASymptoms.setColumns(20);
+        jTASymptoms.setLineWrap(true);
         jTASymptoms.setRows(5);
         jScrollPane1.setViewportView(jTASymptoms);
 
         jTADiagnosis.setColumns(20);
+        jTADiagnosis.setLineWrap(true);
         jTADiagnosis.setRows(5);
         jScrollPane2.setViewportView(jTADiagnosis);
 
         jTAPrescription.setColumns(20);
+        jTAPrescription.setLineWrap(true);
         jTAPrescription.setRows(5);
         jScrollPane3.setViewportView(jTAPrescription);
 
@@ -119,7 +122,7 @@ public class CreateDiagnosis extends javax.swing.JFrame {
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jFormattedTextField2, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jFTFBloodPressure, javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jFTFTemperature, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(231, 231, 231)
@@ -147,7 +150,7 @@ public class CreateDiagnosis extends javax.swing.JFrame {
                             .addComponent(jFTFTemperature, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(40, 40, 40)
                         .addComponent(jLabel4))
-                    .addComponent(jFormattedTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jFTFBloodPressure, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -169,6 +172,7 @@ public class CreateDiagnosis extends javax.swing.JFrame {
         );
 
         jFTFTemperature.setHorizontalAlignment(jFTFTemperature.RIGHT);
+        jFTFBloodPressure.setHorizontalAlignment(jFTFBloodPressure.CENTER);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -212,8 +216,8 @@ public class CreateDiagnosis extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBGenerateFile;
     private javax.swing.JButton jBSave;
+    private javax.swing.JFormattedTextField jFTFBloodPressure;
     private javax.swing.JFormattedTextField jFTFTemperature;
-    private javax.swing.JFormattedTextField jFormattedTextField2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
