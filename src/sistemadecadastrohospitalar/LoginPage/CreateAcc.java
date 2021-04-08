@@ -5,7 +5,8 @@
  */
 package sistemadecadastrohospitalar.LoginPage;
 
-import sistemadecadastrohospitalar.LoginPage.Login;
+import java.util.Arrays;
+import sistemadecadastrohospitalar.DataManipulation.Login.CreateAccDM;
 
 /**
  *
@@ -134,6 +135,10 @@ public class CreateAcc extends javax.swing.JFrame {
 
     private void createAccBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createAccBtnActionPerformed
         // TODO add your handling code here:
+        CreateAccDM createAccDM = new CreateAccDM();
+        createAccDM.insert(nameTF.getText(), surnameTF.getText(),
+                usernameTF.getText(), String.valueOf(passwordField.getPassword()),
+                (String) functionCB.getSelectedItem());
     }//GEN-LAST:event_createAccBtnActionPerformed
 
     private void goBackBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_goBackBtnActionPerformed
