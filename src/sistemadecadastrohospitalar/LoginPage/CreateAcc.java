@@ -5,7 +5,6 @@
  */
 package sistemadecadastrohospitalar.LoginPage;
 
-import java.util.Arrays;
 import sistemadecadastrohospitalar.DataManipulation.Login.CreateAccDM;
 
 /**

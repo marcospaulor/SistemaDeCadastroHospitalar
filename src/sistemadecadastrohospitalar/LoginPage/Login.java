@@ -5,6 +5,8 @@
  */
 package sistemadecadastrohospitalar.LoginPage;
 
+import sistemadecadastrohospitalar.DataManipulation.Login.Auth;
+
 /**
  *
  * @author gbpis
@@ -36,7 +38,7 @@ public class Login extends javax.swing.JFrame {
         admRadioBtn = new javax.swing.JRadioButton();
         medRadioBtn = new javax.swing.JRadioButton();
         passwdLabel = new javax.swing.JLabel();
-        passwdTF = new javax.swing.JTextField();
+        passwordField = new javax.swing.JPasswordField();
         loginBtn = new javax.swing.JButton();
         createAccBtn = new javax.swing.JButton();
 
@@ -76,18 +78,17 @@ public class Login extends javax.swing.JFrame {
                     .addComponent(usernameLabel)
                     .addComponent(passwdLabel))
                 .addGap(18, 18, 18)
-                .addGroup(contentPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(contentPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(contentPaneLayout.createSequentialGroup()
-                            .addComponent(admRadioBtn)
-                            .addGap(18, 18, 18)
-                            .addComponent(medRadioBtn))
-                        .addComponent(usernameTF)
-                        .addComponent(passwdTF, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE))
+                .addGroup(contentPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(contentPaneLayout.createSequentialGroup()
+                        .addComponent(admRadioBtn)
+                        .addGap(18, 18, 18)
+                        .addComponent(medRadioBtn))
+                    .addComponent(usernameTF, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
                     .addGroup(contentPaneLayout.createSequentialGroup()
                         .addComponent(loginBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(createAccBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(createAccBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(passwordField))
                 .addContainerGap(41, Short.MAX_VALUE))
         );
         contentPaneLayout.setVerticalGroup(
@@ -104,7 +105,7 @@ public class Login extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(contentPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(passwdLabel)
-                    .addComponent(passwdTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(passwordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(contentPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(loginBtn)
@@ -128,6 +129,13 @@ public class Login extends javax.swing.JFrame {
 
     private void loginBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginBtnActionPerformed
         // TODO add your handling code here:
+        Auth auth = new Auth();
+        if (auth.validate(usernameTF.getText(),
+                String.valueOf(passwordField.getPassword()), "adm")){
+            System.out.println("Login feito com sucesso!");
+        } else {
+            System.out.println("Falha no login!");
+        }
     }//GEN-LAST:event_loginBtnActionPerformed
 
     private void createAccBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createAccBtnActionPerformed
@@ -172,7 +180,7 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JButton loginBtn;
     private javax.swing.JRadioButton medRadioBtn;
     private javax.swing.JLabel passwdLabel;
-    private javax.swing.JTextField passwdTF;
+    private javax.swing.JPasswordField passwordField;
     private javax.swing.JLabel usernameLabel;
     private javax.swing.JTextField usernameTF;
     // End of variables declaration//GEN-END:variables
