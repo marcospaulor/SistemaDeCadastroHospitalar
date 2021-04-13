@@ -5,6 +5,7 @@
  */
 package sistemadecadastrohospitalar.LoginPage;
 
+import javax.swing.JOptionPane;
 import sistemadecadastrohospitalar.DataManipulation.Login.CreateAccDM;
 
 /**
@@ -134,10 +135,16 @@ public class CreateAcc extends javax.swing.JFrame {
 
     private void createAccBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createAccBtnActionPerformed
         // TODO add your handling code here:
-        CreateAccDM createAccDM = new CreateAccDM();
-        createAccDM.insert(nameTF.getText(), surnameTF.getText(),
-                usernameTF.getText(), String.valueOf(passwordField.getPassword()),
-                (String) functionCB.getSelectedItem());
+        if (isAnyEmptyFields()) {
+            JOptionPane.showMessageDialog(null, "Preencha todos os campos");
+        } else {
+            CreateAccDM createAccDM = new CreateAccDM();
+            createAccDM.insert(nameTF.getText(), surnameTF.getText(),
+                    usernameTF.getText(), 
+                    String.valueOf(passwordField.getPassword()),
+                    (String) functionCB.getSelectedItem());
+        }
+
     }//GEN-LAST:event_createAccBtnActionPerformed
 
     private void goBackBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_goBackBtnActionPerformed
@@ -161,4 +168,10 @@ public class CreateAcc extends javax.swing.JFrame {
     private javax.swing.JLabel usernameLabel;
     private javax.swing.JTextField usernameTF;
     // End of variables declaration//GEN-END:variables
+
+    private boolean isAnyEmptyFields() {
+        return nameTF.getText().isEmpty() || surnameTF.getText().isEmpty() || 
+                usernameTF.getText().isEmpty() ||
+                String.valueOf(passwordField.getPassword()).isEmpty();   
+    }
 }
