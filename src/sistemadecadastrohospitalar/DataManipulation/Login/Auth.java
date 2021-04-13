@@ -29,8 +29,11 @@ public class Auth {
             pst.setString(2, password);
             rs = pst.executeQuery();
             if (rs.next()) {
+                System.out.println("Login feito com sucesso!");
                 Conn.closeConnection();
                 return true;
+            } else {
+                System.out.println("Falha no login!");
             }
         } catch(SQLException e) {
             System.out.println("Erro: " + e.getMessage());

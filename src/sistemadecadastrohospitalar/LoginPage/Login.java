@@ -6,6 +6,7 @@
 package sistemadecadastrohospitalar.LoginPage;
 
 import sistemadecadastrohospitalar.DataManipulation.Login.Auth;
+import sistemadecadastrohospitalar.AdmPage.Adm;
 
 /**
  *
@@ -31,26 +32,18 @@ public class Login extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        functionGp = new javax.swing.ButtonGroup();
         contentPane = new javax.swing.JPanel();
         usernameLabel = new javax.swing.JLabel();
         usernameTF = new javax.swing.JTextField();
-        admRadioBtn = new javax.swing.JRadioButton();
-        medRadioBtn = new javax.swing.JRadioButton();
         passwdLabel = new javax.swing.JLabel();
         passwordField = new javax.swing.JPasswordField();
         loginBtn = new javax.swing.JButton();
         createAccBtn = new javax.swing.JButton();
+        functionCB = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         usernameLabel.setText("Username");
-
-        functionGp.add(admRadioBtn);
-        admRadioBtn.setText("ADM");
-
-        functionGp.add(medRadioBtn);
-        medRadioBtn.setText("MED");
 
         passwdLabel.setText("Senha");
 
@@ -68,6 +61,8 @@ public class Login extends javax.swing.JFrame {
             }
         });
 
+        functionCB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Administração", "Médico" }));
+
         javax.swing.GroupLayout contentPaneLayout = new javax.swing.GroupLayout(contentPane);
         contentPane.setLayout(contentPaneLayout);
         contentPaneLayout.setHorizontalGroup(
@@ -79,16 +74,14 @@ public class Login extends javax.swing.JFrame {
                     .addComponent(passwdLabel))
                 .addGap(18, 18, 18)
                 .addGroup(contentPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(contentPaneLayout.createSequentialGroup()
-                        .addComponent(admRadioBtn)
-                        .addGap(18, 18, 18)
-                        .addComponent(medRadioBtn))
-                    .addComponent(usernameTF, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
-                    .addGroup(contentPaneLayout.createSequentialGroup()
-                        .addComponent(loginBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(createAccBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(passwordField))
+                    .addComponent(functionCB, 0, 250, Short.MAX_VALUE)
+                    .addGroup(contentPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(usernameTF, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
+                        .addGroup(contentPaneLayout.createSequentialGroup()
+                            .addComponent(loginBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(createAccBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(passwordField)))
                 .addContainerGap(41, Short.MAX_VALUE))
         );
         contentPaneLayout.setVerticalGroup(
@@ -99,10 +92,8 @@ public class Login extends javax.swing.JFrame {
                     .addComponent(usernameTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(usernameLabel))
                 .addGap(18, 18, 18)
-                .addGroup(contentPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(admRadioBtn)
-                    .addComponent(medRadioBtn))
-                .addGap(18, 18, 18)
+                .addComponent(functionCB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(19, 19, 19)
                 .addGroup(contentPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(passwdLabel)
                     .addComponent(passwordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -130,11 +121,23 @@ public class Login extends javax.swing.JFrame {
     private void loginBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginBtnActionPerformed
         // TODO add your handling code here:
         Auth auth = new Auth();
-        if (auth.validate(usernameTF.getText(),
-                String.valueOf(passwordField.getPassword()), "adm")){
-            System.out.println("Login feito com sucesso!");
+        
+        if ("Administração".equals((String) functionCB.getSelectedItem())) {
+            if (auth.validate(usernameTF.getText(), 
+                    String.valueOf(passwordField.getPassword()), "adm")){
+                Adm adm = new Adm();
+                adm.setVisible(true);
+                dispose();    
+            }
         } else {
-            System.out.println("Falha no login!");
+            if (auth.validate(usernameTF.getText(), 
+                    String.valueOf(passwordField.getPassword()), "med")) {
+                /*
+                * IMPLEMENTAR
+                * MARCOS PAULO RODRIGUES
+                * FAZER IR PARA A PÁGINA DO MÉDICO
+                */
+            }
         }
     }//GEN-LAST:event_loginBtnActionPerformed
 
@@ -173,12 +176,10 @@ public class Login extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JRadioButton admRadioBtn;
     private javax.swing.JPanel contentPane;
     private javax.swing.JButton createAccBtn;
-    private javax.swing.ButtonGroup functionGp;
+    private javax.swing.JComboBox<String> functionCB;
     private javax.swing.JButton loginBtn;
-    private javax.swing.JRadioButton medRadioBtn;
     private javax.swing.JLabel passwdLabel;
     private javax.swing.JPasswordField passwordField;
     private javax.swing.JLabel usernameLabel;
