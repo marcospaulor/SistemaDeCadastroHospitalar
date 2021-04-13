@@ -10,6 +10,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -33,7 +34,7 @@ public class Auth {
                 Conn.closeConnection();
                 return true;
             } else {
-                System.out.println("Falha no login!");
+                JOptionPane.showMessageDialog(null, "Usuário ou senha incorreta!");
             }
         } catch(SQLException e) {
             System.out.println("Erro: " + e.getMessage());

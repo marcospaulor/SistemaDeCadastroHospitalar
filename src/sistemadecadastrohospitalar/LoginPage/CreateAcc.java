@@ -144,7 +144,7 @@ public class CreateAcc extends javax.swing.JFrame {
                     String.valueOf(passwordField.getPassword()),
                     (String) functionCB.getSelectedItem());
         }
-
+        cleanFields();
     }//GEN-LAST:event_createAccBtnActionPerformed
 
     private void goBackBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_goBackBtnActionPerformed
@@ -169,9 +169,17 @@ public class CreateAcc extends javax.swing.JFrame {
     private javax.swing.JTextField usernameTF;
     // End of variables declaration//GEN-END:variables
 
+    // métodos para melhorar a experiência do usuário
     private boolean isAnyEmptyFields() {
         return nameTF.getText().isEmpty() || surnameTF.getText().isEmpty() || 
                 usernameTF.getText().isEmpty() ||
                 String.valueOf(passwordField.getPassword()).isEmpty();   
+    }
+    
+    private void cleanFields() {
+        nameTF.setText("");
+        surnameTF.setText("");
+        usernameTF.setText("");
+        passwordField.setText("");
     }
 }

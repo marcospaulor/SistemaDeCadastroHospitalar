@@ -121,7 +121,6 @@ public class Login extends javax.swing.JFrame {
     private void loginBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginBtnActionPerformed
         // TODO add your handling code here:
         Auth auth = new Auth();
-        
         if ("Administração".equals((String) functionCB.getSelectedItem())) {
             if (auth.validate(usernameTF.getText(), 
                     String.valueOf(passwordField.getPassword()), "adm")){
@@ -139,6 +138,7 @@ public class Login extends javax.swing.JFrame {
                 */
             }
         }
+        cleanFields();
     }//GEN-LAST:event_loginBtnActionPerformed
 
     private void createAccBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createAccBtnActionPerformed
@@ -185,4 +185,10 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel usernameLabel;
     private javax.swing.JTextField usernameTF;
     // End of variables declaration//GEN-END:variables
+    
+    // métodos para melhorar a experiência do usuário
+    private void cleanFields() {
+        usernameTF.setText("");
+        passwordField.setText("");
+    }
 }
