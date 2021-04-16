@@ -29,22 +29,283 @@ public class Adm extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        registerArea = new javax.swing.JPanel();
+        patientArea = new javax.swing.JPanel();
+        pNameLabel = new javax.swing.JLabel();
+        pNameTF = new javax.swing.JTextField();
+        pRGLabel = new javax.swing.JLabel();
+        pRGTF = new javax.swing.JTextField();
+        pCPFLabel = new javax.swing.JLabel();
+        pCPFTF = new javax.swing.JTextField();
+        pAddressLabel = new javax.swing.JLabel();
+        pAddressTF = new javax.swing.JTextField();
+        bloodTypeLabel = new javax.swing.JLabel();
+        bloodTypeCB = new javax.swing.JComboBox<>();
+        birthdayLabel = new javax.swing.JLabel();
+        birthdayFTF = new javax.swing.JFormattedTextField();
+        paymentMethodL = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        companionArea = new javax.swing.JPanel();
+        cNameLabel = new javax.swing.JLabel();
+        cNameTF = new javax.swing.JTextField();
+        cRGLabel = new javax.swing.JLabel();
+        cRGTF = new javax.swing.JTextField();
+        cCPFLabel = new javax.swing.JLabel();
+        cCPFTF = new javax.swing.JTextField();
+        cAddressLabel = new javax.swing.JLabel();
+        cAddressTF = new javax.swing.JTextField();
+        btnArea = new javax.swing.JPanel();
+        insertBtn = new javax.swing.JButton();
+        editBtn = new javax.swing.JButton();
+        deleteBtn = new javax.swing.JButton();
+        searchPatientArea = new javax.swing.JPanel();
+        searchPatientLabel = new javax.swing.JLabel();
+        searchPatientTF = new javax.swing.JTextField();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        registerArea.setBorder(javax.swing.BorderFactory.createTitledBorder("Registro"));
+        registerArea.setLayout(new java.awt.GridLayout());
+
+        patientArea.setBorder(javax.swing.BorderFactory.createTitledBorder("Paciente"));
+
+        pNameLabel.setText("Nome");
+
+        pRGLabel.setText("RG");
+
+        pCPFLabel.setText("CPF");
+
+        pAddressLabel.setText("Endereço");
+
+        bloodTypeLabel.setText("Tipo Sanguíneo");
+
+        bloodTypeCB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "A-", "A+", "B-", "B+", "AB-", "AB+", "O-", "O+" }));
+
+        birthdayLabel.setText("Data de Nascimento");
+
+        birthdayFTF.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter()));
+
+        paymentMethodL.setText("Forma de Pagamento");
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Dinheiro", "Cartão de Crédito / Débito", "Plano de Saúde" }));
+
+        javax.swing.GroupLayout patientAreaLayout = new javax.swing.GroupLayout(patientArea);
+        patientArea.setLayout(patientAreaLayout);
+        patientAreaLayout.setHorizontalGroup(
+            patientAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(patientAreaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(patientAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, patientAreaLayout.createSequentialGroup()
+                        .addGroup(patientAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(pNameLabel)
+                            .addComponent(pRGLabel)
+                            .addComponent(pCPFLabel))
+                        .addGap(28, 28, 28)
+                        .addGroup(patientAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(pNameTF, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(pRGTF, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(pCPFTF, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, patientAreaLayout.createSequentialGroup()
+                        .addComponent(pAddressLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(pAddressTF, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, patientAreaLayout.createSequentialGroup()
+                        .addGroup(patientAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(birthdayLabel)
+                            .addComponent(bloodTypeLabel)
+                            .addComponent(paymentMethodL))
+                        .addGap(18, 18, 18)
+                        .addGroup(patientAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(bloodTypeCB, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(birthdayFTF)
+                            .addComponent(jComboBox1, 0, 1, Short.MAX_VALUE))))
+                .addGap(0, 32, Short.MAX_VALUE))
+        );
+        patientAreaLayout.setVerticalGroup(
+            patientAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(patientAreaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(patientAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(pNameLabel)
+                    .addComponent(pNameTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(patientAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(pRGLabel)
+                    .addComponent(pRGTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(patientAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(pCPFLabel)
+                    .addComponent(pCPFTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(21, 21, 21)
+                .addGroup(patientAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(pAddressLabel)
+                    .addComponent(pAddressTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(patientAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(bloodTypeLabel)
+                    .addComponent(bloodTypeCB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(patientAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(birthdayLabel)
+                    .addComponent(birthdayFTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(13, 13, 13)
+                .addGroup(patientAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(paymentMethodL)
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(52, Short.MAX_VALUE))
+        );
+
+        registerArea.add(patientArea);
+
+        companionArea.setBorder(javax.swing.BorderFactory.createTitledBorder("Acompanhante"));
+
+        cNameLabel.setText("Nome");
+
+        cRGLabel.setText("RG");
+
+        cCPFLabel.setText("CPF");
+
+        cAddressLabel.setText("Endereço");
+
+        javax.swing.GroupLayout companionAreaLayout = new javax.swing.GroupLayout(companionArea);
+        companionArea.setLayout(companionAreaLayout);
+        companionAreaLayout.setHorizontalGroup(
+            companionAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(companionAreaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(companionAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(companionAreaLayout.createSequentialGroup()
+                        .addGroup(companionAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cNameLabel)
+                            .addComponent(cRGLabel)
+                            .addComponent(cCPFLabel))
+                        .addGap(28, 28, 28)
+                        .addGroup(companionAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cNameTF, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cRGTF, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cCPFTF, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(companionAreaLayout.createSequentialGroup()
+                        .addComponent(cAddressLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(cAddressTF, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(32, Short.MAX_VALUE))
+        );
+        companionAreaLayout.setVerticalGroup(
+            companionAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(companionAreaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(companionAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cNameLabel)
+                    .addComponent(cNameTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(companionAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cRGLabel)
+                    .addComponent(cRGTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(companionAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cCPFLabel)
+                    .addComponent(cCPFTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(21, 21, 21)
+                .addGroup(companionAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cAddressLabel)
+                    .addComponent(cAddressTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(158, Short.MAX_VALUE))
+        );
+
+        registerArea.add(companionArea);
+
+        insertBtn.setText("Inserir");
+        btnArea.add(insertBtn);
+
+        editBtn.setText("Editar");
+        btnArea.add(editBtn);
+
+        deleteBtn.setText("Excluir");
+        btnArea.add(deleteBtn);
+
+        searchPatientLabel.setText("Pesquisar Paciente");
+
+        javax.swing.GroupLayout searchPatientAreaLayout = new javax.swing.GroupLayout(searchPatientArea);
+        searchPatientArea.setLayout(searchPatientAreaLayout);
+        searchPatientAreaLayout.setHorizontalGroup(
+            searchPatientAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(searchPatientAreaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(searchPatientLabel)
+                .addGap(18, 18, 18)
+                .addComponent(searchPatientTF, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        searchPatientAreaLayout.setVerticalGroup(
+            searchPatientAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(searchPatientAreaLayout.createSequentialGroup()
+                .addGap(5, 5, 5)
+                .addGroup(searchPatientAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(searchPatientTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(searchPatientLabel))
+                .addContainerGap(25, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(registerArea, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnArea, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(searchPatientArea, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(registerArea, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnArea, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(searchPatientArea, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(22, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JFormattedTextField birthdayFTF;
+    private javax.swing.JLabel birthdayLabel;
+    private javax.swing.JComboBox<String> bloodTypeCB;
+    private javax.swing.JLabel bloodTypeLabel;
+    private javax.swing.JPanel btnArea;
+    private javax.swing.JLabel cAddressLabel;
+    private javax.swing.JTextField cAddressTF;
+    private javax.swing.JLabel cCPFLabel;
+    private javax.swing.JTextField cCPFTF;
+    private javax.swing.JLabel cNameLabel;
+    private javax.swing.JTextField cNameTF;
+    private javax.swing.JLabel cRGLabel;
+    private javax.swing.JTextField cRGTF;
+    private javax.swing.JPanel companionArea;
+    private javax.swing.JButton deleteBtn;
+    private javax.swing.JButton editBtn;
+    private javax.swing.JButton insertBtn;
+    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JLabel pAddressLabel;
+    private javax.swing.JTextField pAddressTF;
+    private javax.swing.JLabel pCPFLabel;
+    private javax.swing.JTextField pCPFTF;
+    private javax.swing.JLabel pNameLabel;
+    private javax.swing.JTextField pNameTF;
+    private javax.swing.JLabel pRGLabel;
+    private javax.swing.JTextField pRGTF;
+    private javax.swing.JPanel patientArea;
+    private javax.swing.JLabel paymentMethodL;
+    private javax.swing.JPanel registerArea;
+    private javax.swing.JPanel searchPatientArea;
+    private javax.swing.JLabel searchPatientLabel;
+    private javax.swing.JTextField searchPatientTF;
     // End of variables declaration//GEN-END:variables
 }
