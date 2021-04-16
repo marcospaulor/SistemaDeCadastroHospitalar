@@ -41,8 +41,8 @@ public class Adm extends javax.swing.JFrame {
         pAddressTF = new javax.swing.JTextField();
         bloodTypeLabel = new javax.swing.JLabel();
         bloodTypeCB = new javax.swing.JComboBox<>();
-        birthdayLabel = new javax.swing.JLabel();
-        birthdayFTF = new javax.swing.JFormattedTextField();
+        ageLabel = new javax.swing.JLabel();
+        ageTF = new javax.swing.JTextField();
         paymentMethodL = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox<>();
         companionArea = new javax.swing.JPanel();
@@ -65,7 +65,7 @@ public class Adm extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         registerArea.setBorder(javax.swing.BorderFactory.createTitledBorder("Registro"));
-        registerArea.setLayout(new java.awt.GridLayout());
+        registerArea.setLayout(new java.awt.GridLayout(1, 0));
 
         patientArea.setBorder(javax.swing.BorderFactory.createTitledBorder("Paciente"));
 
@@ -81,9 +81,7 @@ public class Adm extends javax.swing.JFrame {
 
         bloodTypeCB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "A-", "A+", "B-", "B+", "AB-", "AB+", "O-", "O+" }));
 
-        birthdayLabel.setText("Data de Nascimento");
-
-        birthdayFTF.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter()));
+        ageLabel.setText("Idade");
 
         paymentMethodL.setText("Forma de Pagamento");
 
@@ -102,24 +100,24 @@ public class Adm extends javax.swing.JFrame {
                             .addComponent(pRGLabel)
                             .addComponent(pCPFLabel))
                         .addGap(28, 28, 28)
-                        .addGroup(patientAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(pNameTF, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(pRGTF, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(pCPFTF, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(patientAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(pNameTF, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+                            .addComponent(pCPFTF)
+                            .addComponent(pRGTF)))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, patientAreaLayout.createSequentialGroup()
                         .addComponent(pAddressLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(pAddressTF, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, patientAreaLayout.createSequentialGroup()
                         .addGroup(patientAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(birthdayLabel)
+                            .addComponent(ageLabel)
                             .addComponent(bloodTypeLabel)
                             .addComponent(paymentMethodL))
                         .addGap(18, 18, 18)
                         .addGroup(patientAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(bloodTypeCB, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(birthdayFTF)
-                            .addComponent(jComboBox1, 0, 1, Short.MAX_VALUE))))
+                            .addComponent(jComboBox1, 0, 1, Short.MAX_VALUE)
+                            .addComponent(ageTF))))
                 .addGap(0, 32, Short.MAX_VALUE))
         );
         patientAreaLayout.setVerticalGroup(
@@ -147,8 +145,8 @@ public class Adm extends javax.swing.JFrame {
                     .addComponent(bloodTypeCB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(patientAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(birthdayLabel)
-                    .addComponent(birthdayFTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(ageLabel)
+                    .addComponent(ageTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(13, 13, 13)
                 .addGroup(patientAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(paymentMethodL)
@@ -181,10 +179,10 @@ public class Adm extends javax.swing.JFrame {
                             .addComponent(cRGLabel)
                             .addComponent(cCPFLabel))
                         .addGap(28, 28, 28)
-                        .addGroup(companionAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cNameTF, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cRGTF, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cCPFTF, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(companionAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(cNameTF, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+                            .addComponent(cRGTF)
+                            .addComponent(cCPFTF)))
                     .addGroup(companionAreaLayout.createSequentialGroup()
                         .addComponent(cAddressLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -266,17 +264,17 @@ public class Adm extends javax.swing.JFrame {
                 .addComponent(registerArea, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnArea, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(searchPatientArea, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addContainerGap(40, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JFormattedTextField birthdayFTF;
-    private javax.swing.JLabel birthdayLabel;
+    private javax.swing.JLabel ageLabel;
+    private javax.swing.JTextField ageTF;
     private javax.swing.JComboBox<String> bloodTypeCB;
     private javax.swing.JLabel bloodTypeLabel;
     private javax.swing.JPanel btnArea;
