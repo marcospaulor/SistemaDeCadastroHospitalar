@@ -58,9 +58,11 @@ public class Adm extends javax.swing.JFrame {
         insertBtn = new javax.swing.JButton();
         editBtn = new javax.swing.JButton();
         deleteBtn = new javax.swing.JButton();
+        search = new javax.swing.JPanel();
         searchPatientArea = new javax.swing.JPanel();
         searchPatientLabel = new javax.swing.JLabel();
         searchPatientTF = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -222,7 +224,9 @@ public class Adm extends javax.swing.JFrame {
         deleteBtn.setText("Excluir");
         btnArea.add(deleteBtn);
 
-        searchPatientLabel.setText("Pesquisar Paciente");
+        searchPatientLabel.setText("Pesquisar Paciente (CPF)");
+
+        jButton1.setText("Pesquisar");
 
         javax.swing.GroupLayout searchPatientAreaLayout = new javax.swing.GroupLayout(searchPatientArea);
         searchPatientArea.setLayout(searchPatientAreaLayout);
@@ -233,17 +237,22 @@ public class Adm extends javax.swing.JFrame {
                 .addComponent(searchPatientLabel)
                 .addGap(18, 18, 18)
                 .addComponent(searchPatientTF, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jButton1)
                 .addContainerGap())
         );
         searchPatientAreaLayout.setVerticalGroup(
             searchPatientAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(searchPatientAreaLayout.createSequentialGroup()
-                .addGap(5, 5, 5)
+                .addGap(4, 4, 4)
                 .addGroup(searchPatientAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(searchPatientTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(searchPatientLabel))
-                .addContainerGap(25, Short.MAX_VALUE))
+                    .addComponent(searchPatientLabel)
+                    .addComponent(jButton1))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        search.add(searchPatientArea);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -253,9 +262,9 @@ public class Adm extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(registerArea, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnArea, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(searchPatientArea, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnArea, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
+            .addComponent(search, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -265,8 +274,8 @@ public class Adm extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnArea, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(searchPatientArea, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(40, Short.MAX_VALUE))
+                .addComponent(search, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(42, Short.MAX_VALUE))
         );
 
         pack();
@@ -290,6 +299,7 @@ public class Adm extends javax.swing.JFrame {
     private javax.swing.JButton deleteBtn;
     private javax.swing.JButton editBtn;
     private javax.swing.JButton insertBtn;
+    private javax.swing.JButton jButton1;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel pAddressLabel;
     private javax.swing.JTextField pAddressTF;
@@ -302,6 +312,7 @@ public class Adm extends javax.swing.JFrame {
     private javax.swing.JPanel patientArea;
     private javax.swing.JLabel paymentMethodL;
     private javax.swing.JPanel registerArea;
+    private javax.swing.JPanel search;
     private javax.swing.JPanel searchPatientArea;
     private javax.swing.JLabel searchPatientLabel;
     private javax.swing.JTextField searchPatientTF;
