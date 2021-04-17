@@ -246,6 +246,8 @@ public class Adm extends javax.swing.JFrame {
         });
         btnArea.add(deleteBtn);
 
+        searchPatientArea.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+
         searchPatientLabel.setText("Pesquisar Paciente");
 
         searchPatientTF.setToolTipText("Insira o CPF");
@@ -288,7 +290,7 @@ public class Adm extends javax.swing.JFrame {
                     .addComponent(searchPatientLabel)
                     .addComponent(searchBtn)
                     .addComponent(backBtn))
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -310,9 +312,9 @@ public class Adm extends javax.swing.JFrame {
                 .addComponent(registerArea, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnArea, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
                 .addComponent(searchPatientArea, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         pack();

@@ -19,7 +19,7 @@ public class Conn {
     
     public static Connection getConnection() {
         Connection connection = null;
-        String url = "jdbc:mysql://localhost:3308/hospital";
+        String url = "jdbc:mysql://localhost:3306/hospital";
         String username = "root";
         String password = "";
         String driverName = "com.mysql.cj.jdbc.Driver";
