@@ -248,7 +248,7 @@ public class Adm extends javax.swing.JFrame {
 
         searchPatientArea.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
-        searchPatientLabel.setText("Pesquisar Paciente");
+        searchPatientLabel.setText("Pesquisar Paciente (CPF)");
 
         searchPatientTF.setToolTipText("Insira o CPF");
 
