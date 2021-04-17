@@ -98,15 +98,15 @@
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="birthdayLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="ageLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="bloodTypeLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="paymentMethodL" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="bloodTypeCB" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="birthdayFTF" alignment="0" max="32767" attributes="0"/>
                                   <Component id="paymentCB" alignment="0" pref="0" max="32767" attributes="0"/>
+                                  <Component id="ageTF" alignment="0" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -144,8 +144,8 @@
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="birthdayLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="birthdayFTF" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="ageLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="ageTF" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
@@ -210,16 +210,9 @@
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
               </AuxValues>
             </Component>
-            <Component class="javax.swing.JLabel" name="birthdayLabel">
+            <Component class="javax.swing.JLabel" name="ageLabel">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Data de Nascimento"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JFormattedTextField" name="birthdayFTF">
-              <Properties>
-                <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor">
-                  <Format subtype="0" type="1"/>
-                </Property>
+                <Property name="text" type="java.lang.String" value="Idade"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="paymentMethodL">
@@ -240,6 +233,8 @@
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
               </AuxValues>
+            </Component>
+            <Component class="javax.swing.JTextField" name="ageTF">
             </Component>
           </SubComponents>
         </Container>
