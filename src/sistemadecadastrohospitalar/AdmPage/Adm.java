@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package sistemadecadastrohospitalar.AdmPage;
-import java.io.PrintStream;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import sistemadecadastrohospitalar.DataManipulation.Adm.OperacoesAdm;
@@ -329,7 +328,7 @@ public class Adm extends javax.swing.JFrame {
                 System.out.println("entrou em inserir");
                 operacoesadm.inserirDadosPacientes(pNameTF.getText(), pRGTF.getText(), 
                     pCPFTF.getText(), pAddressTF.getText(), (String)bloodTypeCB.getSelectedItem(),
-                    birthdayFTF.getText(), (String)paymentCB.getSelectedItem());
+                    ageTF.getText(), (String)paymentCB.getSelectedItem());
 
                 if(!cNameTF.getText().trim().isEmpty()) {
                     operacoesadm.inserirDadosAcompanhante(cNameTF.getText(), cRGTF.getText(), 
@@ -342,7 +341,7 @@ public class Adm extends javax.swing.JFrame {
                 System.out.println("entrou em editar");
                 operacoesadm.editarDadosPaciente(pNameTF.getText(), pRGTF.getText(), 
                     pCPFTF.getText(), pAddressTF.getText(), (String)bloodTypeCB.getSelectedItem(),
-                    birthdayFTF.getText(), (String)paymentCB.getSelectedItem());
+                    ageTF.getText(), (String)paymentCB.getSelectedItem());
 
                 if(!cNameTF.getText().trim().isEmpty()) {
                     operacoesadm.editarDadosAcompanhante(cNameTF.getText(), cRGTF.getText(), 
@@ -386,7 +385,7 @@ public class Adm extends javax.swing.JFrame {
             pCPFTF.setText(dados_paciente.get(2));
             pAddressTF.setText(dados_paciente.get(3));
             bloodTypeCB.setSelectedItem(dados_paciente.get(4));
-            birthdayFTF.setText(dados_paciente.get(5));
+            ageTF.setText(dados_paciente.get(5));
             paymentCB.setSelectedItem(dados_paciente.get(6));
             
             setupPesquisa();
@@ -413,7 +412,7 @@ public class Adm extends javax.swing.JFrame {
         pCPFTF.setText("");
         pAddressTF.setText("");
         bloodTypeCB.setSelectedItem("A-");
-        birthdayFTF.setText("");
+        ageTF.setText("");
         paymentCB.setSelectedItem("Dinheiro");
         
         cNameTF.setText("");
@@ -429,7 +428,7 @@ public class Adm extends javax.swing.JFrame {
         pCPFTF.setEditable(true);
         pAddressTF.setEditable(true);
         bloodTypeCB.setEnabled(true);
-        birthdayFTF.setEditable(true);
+        ageTF.setEditable(true);
         paymentCB.setEnabled(true);
         insertBtn.setEnabled(true);   
         
@@ -452,7 +451,7 @@ public class Adm extends javax.swing.JFrame {
         pCPFTF.setEditable(false);
         pAddressTF.setEditable(true);
         bloodTypeCB.setEnabled(true);
-        birthdayFTF.setEditable(true);
+        ageTF.setEditable(true);
         paymentCB.setEnabled(true);
         insertBtn.setEnabled(true);   
         
@@ -472,7 +471,7 @@ public class Adm extends javax.swing.JFrame {
         pCPFTF.setEditable(false);
         pAddressTF.setEditable(false);
         bloodTypeCB.setEnabled(false);
-        birthdayFTF.setEditable(false);
+        ageTF.setEditable(false);
         paymentCB.setEnabled(false);
         insertBtn.setEnabled(false);   
         
