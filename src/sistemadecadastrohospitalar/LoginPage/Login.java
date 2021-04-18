@@ -7,6 +7,7 @@ package sistemadecadastrohospitalar.LoginPage;
 
 import sistemadecadastrohospitalar.DataManipulation.Login.Auth;
 import sistemadecadastrohospitalar.AdmPage.Adm;
+import sistemadecadastrohospitalar.MedPage.Med;
 
 /**
  *
@@ -131,11 +132,9 @@ public class Login extends javax.swing.JFrame {
         } else {
             if (auth.validate(usernameTF.getText(), 
                     String.valueOf(passwordField.getPassword()), "med")) {
-                /*
-                * IMPLEMENTAR
-                * MARCOS PAULO RODRIGUES
-                * FAZER IR PARA A PÁGINA DO MÉDICO
-                */
+                Med med = new Med();
+                med.setVisible(true);
+                dispose();
             }
         }
         cleanFields();

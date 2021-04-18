@@ -47,15 +47,13 @@
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                       <Component id="functionCB" pref="250" max="32767" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="usernameTF" pref="250" max="32767" attributes="0"/>
-                          <Group type="102" attributes="0">
-                              <Component id="loginBtn" min="-2" pref="100" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="createAccBtn" min="-2" pref="100" max="-2" attributes="0"/>
-                          </Group>
-                          <Component id="passwordField" alignment="0" max="32767" attributes="0"/>
+                      <Component id="usernameTF" pref="250" max="32767" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <Component id="loginBtn" min="-2" pref="100" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="createAccBtn" min="-2" pref="100" max="-2" attributes="0"/>
                       </Group>
+                      <Component id="passwordField" alignment="0" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace pref="41" max="32767" attributes="0"/>
               </Group>
