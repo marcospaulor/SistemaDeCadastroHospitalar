@@ -62,6 +62,8 @@ public class Adm extends javax.swing.JFrame {
         insertBtn = new javax.swing.JButton();
         editBtn = new javax.swing.JButton();
         deleteBtn = new javax.swing.JButton();
+        addBtn = new javax.swing.JButton();
+        queueBtn = new javax.swing.JButton();
         searchPatientArea = new javax.swing.JPanel();
         searchPatientLabel = new javax.swing.JLabel();
         searchPatientTF = new javax.swing.JTextField();
@@ -87,7 +89,7 @@ public class Adm extends javax.swing.JFrame {
 
         bloodTypeCB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "A-", "A+", "B-", "B+", "AB-", "AB+", "O-", "O+" }));
 
-        ageLabel.setText("Idade");
+        ageLabel.setText("Data de Nascimento");
 
         paymentMethodL.setText("Forma de Pagamento");
 
@@ -124,7 +126,7 @@ public class Adm extends javax.swing.JFrame {
                             .addComponent(bloodTypeCB, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(paymentCB, 0, 1, Short.MAX_VALUE)
                             .addComponent(ageTF))))
-                .addGap(0, 35, Short.MAX_VALUE))
+                .addGap(0, 25, Short.MAX_VALUE))
         );
         patientAreaLayout.setVerticalGroup(
             patientAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -193,7 +195,7 @@ public class Adm extends javax.swing.JFrame {
                         .addComponent(cAddressLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(cAddressTF, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(35, Short.MAX_VALUE))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
         companionAreaLayout.setVerticalGroup(
             companionAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -214,10 +216,12 @@ public class Adm extends javax.swing.JFrame {
                 .addGroup(companionAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cAddressLabel)
                     .addComponent(cAddressTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(158, Short.MAX_VALUE))
+                .addContainerGap(153, Short.MAX_VALUE))
         );
 
         registerArea.add(companionArea);
+
+        btnArea.setPreferredSize(new java.awt.Dimension(261, 33));
 
         insertBtn.setText("Inserir");
         insertBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -242,6 +246,22 @@ public class Adm extends javax.swing.JFrame {
             }
         });
         btnArea.add(deleteBtn);
+
+        addBtn.setText("Adicionar na fila");
+        addBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addBtnActionPerformed(evt);
+            }
+        });
+        btnArea.add(addBtn);
+
+        queueBtn.setText("Fila");
+        queueBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                queueBtnActionPerformed(evt);
+            }
+        });
+        btnArea.add(queueBtn);
 
         searchPatientArea.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
@@ -298,18 +318,21 @@ public class Adm extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(registerArea, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnArea, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(searchPatientArea, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnArea, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(193, 193, 193))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(registerArea, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnArea, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnArea, javax.swing.GroupLayout.DEFAULT_SIZE, 64, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(searchPatientArea, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -318,6 +341,7 @@ public class Adm extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     OperacoesAdm operacoesadm = new OperacoesAdm();
+    Queue fila = new Queue();
     
     private void insertBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_insertBtnActionPerformed
 
@@ -326,17 +350,23 @@ public class Adm extends javax.swing.JFrame {
             case 0:
                 System.out.println(operacoesadm.modoEdicao());
                 System.out.println("entrou em inserir");
-                operacoesadm.inserirDadosPacientes(pNameTF.getText(), pRGTF.getText(), 
+                
+                if(operacoesadm.ageCalc(ageTF.getText())<18 && cNameTF.getText().trim().isEmpty()) {
+                    JOptionPane.showMessageDialog(null, "Menores de 18 anos precisam de um acompanhante!", "Erro", JOptionPane.ERROR_MESSAGE);
+                    break;
+                }else{
+                    operacoesadm.inserirDadosPacientes(pNameTF.getText(), pRGTF.getText(), 
                     pCPFTF.getText(), pAddressTF.getText(), (String)bloodTypeCB.getSelectedItem(),
                     ageTF.getText(), (String)paymentCB.getSelectedItem());
 
-                if(!cNameTF.getText().trim().isEmpty()) {
-                    operacoesadm.inserirDadosAcompanhante(cNameTF.getText(), cRGTF.getText(), 
-                        cCPFTF.getText(), cAddressTF.getText(), pCPFTF.getText());
+                    if(!cNameTF.getText().trim().isEmpty()) {
+                        operacoesadm.inserirDadosAcompanhante(cNameTF.getText(), cRGTF.getText(), 
+                            cCPFTF.getText(), cAddressTF.getText(), pCPFTF.getText());
+                    }
+                    cleanAdmFields();
+                    break;
                 }
-                cleanAdmFields();
-                break;
-                
+                               
             case 1: 
                 System.out.println("entrou em editar");
                 operacoesadm.editarDadosPaciente(pNameTF.getText(), pRGTF.getText(), 
@@ -402,9 +432,24 @@ public class Adm extends javax.swing.JFrame {
     }//GEN-LAST:event_searchBtnActionPerformed
 
     private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed
+        
         setupInic();
         cleanAdmFields();
+        
     }//GEN-LAST:event_backBtnActionPerformed
+
+    private void addBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBtnActionPerformed
+        
+        Object queuedata = operacoesadm.addQueue(pNameTF.getText(), pCPFTF.getText());
+        fila.insertQueueRow(queuedata);
+               
+    }//GEN-LAST:event_addBtnActionPerformed
+
+    private void queueBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_queueBtnActionPerformed
+        
+        fila.setVisible(true);
+        
+    }//GEN-LAST:event_queueBtnActionPerformed
 
     public void cleanAdmFields() {
         pNameTF.setText("");
@@ -440,6 +485,7 @@ public class Adm extends javax.swing.JFrame {
         editBtn.setEnabled(false);
         deleteBtn.setEnabled(false);
         backBtn.setEnabled(false);
+        addBtn.setEnabled(false);
         
         operacoesadm.modoEdicaoDesligado();
     }
@@ -462,6 +508,7 @@ public class Adm extends javax.swing.JFrame {
 
         insertBtn.setEnabled(true);
         editBtn.setEnabled(false);
+        addBtn.setEnabled(false);
     }
     
     private void setupPesquisa() {
@@ -483,11 +530,13 @@ public class Adm extends javax.swing.JFrame {
         editBtn.setEnabled(true);
         deleteBtn.setEnabled(true);
         backBtn.setEnabled(true);
+        addBtn.setEnabled(true);
         
     }
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton addBtn;
     private javax.swing.JLabel ageLabel;
     private javax.swing.JTextField ageTF;
     private javax.swing.JButton backBtn;
@@ -517,6 +566,7 @@ public class Adm extends javax.swing.JFrame {
     private javax.swing.JPanel patientArea;
     private javax.swing.JComboBox<String> paymentCB;
     private javax.swing.JLabel paymentMethodL;
+    private javax.swing.JButton queueBtn;
     private javax.swing.JPanel registerArea;
     private javax.swing.JButton searchBtn;
     private javax.swing.JPanel searchPatientArea;

@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.Statement;
 import java.sql.SQLException;
 import java.sql.ResultSet;
+import java.time.LocalDate;
+import java.time.Period;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import sistemadecadastrohospitalar.DBConnection.Conn;
@@ -203,5 +205,38 @@ public class OperacoesAdm {
         } 
     }
     
-
+    private int senha = 1;
+    public Object addQueue(String nome, String cpf) {
+        
+        Object[] queueData = new Object[]{nome, cpf, this.senha};
+        this.senha++;
+        return queueData;  
+        
+    }
+    
+    public int ageCalc(String dataNasc) {
+    
+        try {
+            
+            int year = Integer.parseInt(dataNasc.substring(6, 10));
+            int month = Integer.parseInt(dataNasc.substring(3, 5));
+            int day = Integer.parseInt(dataNasc.substring(0, 2));
+            LocalDate today = LocalDate.now();
+            LocalDate birth = LocalDate.of(year, month, day);
+            int age = Period.between(birth, today).getYears();
+            return age;
+            
+        }catch(NumberFormatException e) {
+            
+            System.out.println("Erro ao calcular idade: " + e.getMessage());
+            return 0;
+        }
 }
+    
+    
+    
+}    
+
+    
+
+
