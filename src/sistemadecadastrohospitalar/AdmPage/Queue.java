@@ -11,6 +11,7 @@ public class Queue extends javax.swing.JFrame {
 
     public Queue() {
         initComponents();
+        setLocationRelativeTo(null);
         setVisible(false);
     }
 

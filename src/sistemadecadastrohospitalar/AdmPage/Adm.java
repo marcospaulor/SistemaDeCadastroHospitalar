@@ -59,9 +59,11 @@ public class Adm extends javax.swing.JFrame {
         cAddressLabel = new javax.swing.JLabel();
         cAddressTF = new javax.swing.JTextField();
         btnArea = new javax.swing.JPanel();
+        registerBtnArea = new javax.swing.JPanel();
         insertBtn = new javax.swing.JButton();
         editBtn = new javax.swing.JButton();
         deleteBtn = new javax.swing.JButton();
+        queueBtnArea = new javax.swing.JPanel();
         addBtn = new javax.swing.JButton();
         queueBtn = new javax.swing.JButton();
         searchPatientArea = new javax.swing.JPanel();
@@ -222,6 +224,7 @@ public class Adm extends javax.swing.JFrame {
         registerArea.add(companionArea);
 
         btnArea.setPreferredSize(new java.awt.Dimension(261, 33));
+        btnArea.setLayout(new java.awt.BorderLayout());
 
         insertBtn.setText("Inserir");
         insertBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -229,7 +232,7 @@ public class Adm extends javax.swing.JFrame {
                 insertBtnActionPerformed(evt);
             }
         });
-        btnArea.add(insertBtn);
+        registerBtnArea.add(insertBtn);
 
         editBtn.setText("Editar");
         editBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -237,7 +240,7 @@ public class Adm extends javax.swing.JFrame {
                 editBtnActionPerformed(evt);
             }
         });
-        btnArea.add(editBtn);
+        registerBtnArea.add(editBtn);
 
         deleteBtn.setText("Excluir");
         deleteBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -245,7 +248,9 @@ public class Adm extends javax.swing.JFrame {
                 deleteBtnActionPerformed(evt);
             }
         });
-        btnArea.add(deleteBtn);
+        registerBtnArea.add(deleteBtn);
+
+        btnArea.add(registerBtnArea, java.awt.BorderLayout.CENTER);
 
         addBtn.setText("Adicionar na fila");
         addBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -253,7 +258,7 @@ public class Adm extends javax.swing.JFrame {
                 addBtnActionPerformed(evt);
             }
         });
-        btnArea.add(addBtn);
+        queueBtnArea.add(addBtn);
 
         queueBtn.setText("Fila");
         queueBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -261,7 +266,9 @@ public class Adm extends javax.swing.JFrame {
                 queueBtnActionPerformed(evt);
             }
         });
-        btnArea.add(queueBtn);
+        queueBtnArea.add(queueBtn);
+
+        btnArea.add(queueBtnArea, java.awt.BorderLayout.PAGE_START);
 
         searchPatientArea.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
@@ -314,25 +321,22 @@ public class Adm extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(registerArea, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(searchPatientArea, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnArea, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(193, 193, 193))
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnArea, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(registerArea, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(searchPatientArea, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(registerArea, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnArea, javax.swing.GroupLayout.DEFAULT_SIZE, 64, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
+                .addComponent(btnArea, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
                 .addComponent(searchPatientArea, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -567,7 +571,9 @@ public class Adm extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> paymentCB;
     private javax.swing.JLabel paymentMethodL;
     private javax.swing.JButton queueBtn;
+    private javax.swing.JPanel queueBtnArea;
     private javax.swing.JPanel registerArea;
+    private javax.swing.JPanel registerBtnArea;
     private javax.swing.JButton searchBtn;
     private javax.swing.JPanel searchPatientArea;
     private javax.swing.JLabel searchPatientLabel;
