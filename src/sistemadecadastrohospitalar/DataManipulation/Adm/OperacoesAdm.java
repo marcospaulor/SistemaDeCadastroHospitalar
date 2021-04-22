@@ -206,11 +206,11 @@ public class OperacoesAdm {
     }
     
 
-    public void addQueueBD(String nome, String cpf) {
+    public void addQueueBD(String nome, String cpf, String senha) {
         
         try {
-            String query = "INSERT INTO fila (nome, cpf) VALUES" +
-                    "('" + nome + "','" + cpf + "')";
+            String query = "INSERT INTO fila (nome, cpf,senha) VALUES" +
+                    "('" + nome + "','" + cpf + "','"+senha+"')";
             statement = connection.createStatement();
             statement.executeUpdate(query);
             System.out.println("Paciente adicionado na fila!");
