@@ -441,11 +441,11 @@ public class Adm extends javax.swing.JFrame {
         cleanAdmFields();
         
     }//GEN-LAST:event_backBtnActionPerformed
-    int cont = 1;
+
     private void addBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBtnActionPerformed
-        String senha = Integer.toString(cont);
-        operacoesadm.addQueueBD(pNameTF.getText(), pCPFTF.getText(),senha);
-        cont++; 
+        
+        operacoesadm.addQueueBD(pNameTF.getText(), pCPFTF.getText());
+               
     }//GEN-LAST:event_addBtnActionPerformed
 
     private void queueBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_queueBtnActionPerformed
