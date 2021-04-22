@@ -11,6 +11,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
+import sistemadecadastrohospitalar.AdmPage.Queue;
 import sistemadecadastrohospitalar.DBConnection.Conn;
 import sistemadecadastrohospitalar.DataManipulation.Med.CreateDiagnosis;
 import sistemadecadastrohospitalar.DataManipulation.Med.DiagnosticoModelTable;
@@ -390,6 +391,9 @@ public class Med extends javax.swing.JFrame {
 
     private void voltarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarBtnActionPerformed
         // TODO add your handling code here:
+        Queue fila = new Queue();
+        fila.setVisible(true);
+        fila.verifyWhoLogged("med");
         dispose();
     }//GEN-LAST:event_voltarBtnActionPerformed
   
