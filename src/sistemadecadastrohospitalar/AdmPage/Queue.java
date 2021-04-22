@@ -1,7 +1,14 @@
 package sistemadecadastrohospitalar.AdmPage;
 
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JOptionPane;
+import sistemadecadastrohospitalar.DBConnection.Conn;
+import sistemadecadastrohospitalar.DataManipulation.Adm.QueueModel;
 import sistemadecadastrohospitalar.MedPage.Med;
 
 /**
@@ -129,7 +136,45 @@ public class Queue extends javax.swing.JFrame {
         }
         queueRow.addRow((Object[]) dados);
     }
-    
+    public void verifyWhoLogged(String function){
+        if(function == "med"){
+            showQueue();
+        }
+    }
+    public ArrayList<QueueModel> createQueue(){
+        ArrayList<QueueModel> queueList = new ArrayList<>();
+        Connection conn;
+        Statement stmt;
+        ResultSet rs;
+        try {
+            conn = Conn.getConnection();
+            String query = "SELECT * FROM fila";
+            stmt = conn.createStatement();
+            rs = stmt.executeQuery(query);
+            
+            QueueModel model;
+            while (rs.next()) {
+                model = new QueueModel(rs.getString("nome"),rs.getString("cpf"),rs.getInt("senha"));
+                queueList.add(model);
+            }
+        } catch (SQLException e) {
+            System.err.println("Erro: " + e);
+        }
+        
+        return queueList;
+    }
+    public void showQueue(){
+        ArrayList<QueueModel> list = createQueue();
+        DefaultTableModel model = (DefaultTableModel)queueTable.getModel();
+        Object [] row = new Object[4];
+        
+        for (int i = 0; i < list.size(); i++) {
+            row[0] = list.get(i).getNome();
+            row[1] = list.get(i).getCpf();
+            row[2] = list.get(i).getSenha();
+            model.addRow(row);
+        }
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel btnArea;
     private javax.swing.JScrollPane jScrollPane1;

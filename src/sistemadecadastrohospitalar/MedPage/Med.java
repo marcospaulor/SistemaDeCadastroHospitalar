@@ -441,10 +441,6 @@ public class Med extends javax.swing.JFrame {
         Statement stmt;
         ResultSet rs;
         try {
-            //stmt = conn.createStatement();
-            //String query = "SELECT nome, tipo_sang FROM pacientes WHERE cpf = "+cpf+"";
-            //ResultSet rs = stmt.executeQuery(query);
-            //rs.first();
             conn = Conn.getConnection();
             String query = "SELECT nome, tipo_sang FROM pacientes WHERE cpf = "+ cpf +"";
             stmt = conn.createStatement();

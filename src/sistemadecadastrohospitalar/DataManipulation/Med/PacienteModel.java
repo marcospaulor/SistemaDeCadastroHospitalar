@@ -10,8 +10,8 @@ package sistemadecadastrohospitalar.DataManipulation.Med;
  * @author marco
  */
 public class PacienteModel {
-    private String nome;
-    private String tipo_sang;
+    private final String nome;
+    private final String tipo_sang;
 
     public PacienteModel(String nome, String tipo_sang) {
         this.nome = nome;

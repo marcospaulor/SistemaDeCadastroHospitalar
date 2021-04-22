@@ -10,8 +10,10 @@ package sistemadecadastrohospitalar.DataManipulation.Med;
  * @author marco
  */
 public class DiagnosticoModelTable {
-    private int temperatura;
-    private String pressao, sintoma, diagnostico;
+    private final int temperatura;
+    private final String pressao;
+    private final String sintoma;
+    private final String diagnostico;
 
     public DiagnosticoModelTable(int temperatura, String pressao, String sintoma, String diagnostico) {
         this.temperatura = temperatura;

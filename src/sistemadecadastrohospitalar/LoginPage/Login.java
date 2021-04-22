@@ -162,6 +162,7 @@ public class Login extends javax.swing.JFrame {
             if (auth.validate(usernameTF.getText(), 
                     String.valueOf(passwordField.getPassword()), "med")) {
                 Queue q = new Queue();
+                q.verifyWhoLogged("med");
                 q.setVisible(true);
                 dispose();
             }
