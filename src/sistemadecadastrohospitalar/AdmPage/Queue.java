@@ -110,7 +110,7 @@ public class Queue extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void qBackBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_qBackBtnActionPerformed
-        dispose();
+        setVisible(false);
     }//GEN-LAST:event_qBackBtnActionPerformed
 
     private void queueTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_queueTableMouseClicked
