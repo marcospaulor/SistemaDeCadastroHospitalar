@@ -7,7 +7,7 @@ package sistemadecadastrohospitalar.LoginPage;
 
 import sistemadecadastrohospitalar.DataManipulation.Login.Auth;
 import sistemadecadastrohospitalar.AdmPage.Adm;
-import sistemadecadastrohospitalar.MedPage.Med;
+import sistemadecadastrohospitalar.AdmPage.Queue;
 
 /**
  *
@@ -161,8 +161,8 @@ public class Login extends javax.swing.JFrame {
         } else {
             if (auth.validate(usernameTF.getText(), 
                     String.valueOf(passwordField.getPassword()), "med")) {
-                Med med = new Med();
-                med.setVisible(true);
+                Queue q = new Queue();
+                q.setVisible(true);
                 dispose();
             }
         }

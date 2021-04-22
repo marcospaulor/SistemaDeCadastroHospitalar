@@ -3,12 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package sistemadecadastrohospitalar.DataManipulation.Login;
+package sistemadecadastrohospitalar.DataManipulation.Med;
 
 import java.sql.Connection;
 import java.sql.Statement;
 import java.sql.SQLException;
-import sistemadecadastrohospitalar.AdmPage.Adm;
 import sistemadecadastrohospitalar.DBConnection.Conn;
 /**
  *
@@ -16,20 +15,18 @@ import sistemadecadastrohospitalar.DBConnection.Conn;
  */
 public class CreateDiagnosis {
     
-    public void insert(Adm fk_cpf,String temperatura,String pressao,String sintomas
+    public void insert( String cpf_fk,int temperatura,String pressao,String sintoma
     ,String diagnostico,String prescricao){
         Statement statement;
         Connection connection = Conn.getConnection();
         try{
-            String query = String.format("INSERT INTO diagnosis(fk_cpf,temp,pressure"
-                    +",sintomas,diagnostico,prescricao,fk_paciente) VALUES"
-                    +"('%s','%s','%s','%s','%s')",fk_cpf, temperatura,pressao,
-                    sintomas,diagnostico,prescricao);
+            String query = "INSERT INTO diagnostico(cpf_fk, temperatura,pressao, sintoma, diagnostico, prescricao)"
+                    + " VALUES ('"+cpf_fk+"','"+temperatura+"','"+pressao+"','"+sintoma+"','"+diagnostico+"','"+prescricao+"')";
             statement = connection.createStatement();
-            statement.executeQuery(query);
+            statement.executeUpdate(query);
             Conn.getConnection();
         } catch (SQLException e){
-            System.err.println("Erro: " + e.getMessage());
+            System.err.println("Erro: DAQUI " + e.getMessage());
         }
     }
 }

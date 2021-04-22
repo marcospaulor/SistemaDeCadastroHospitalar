@@ -2,6 +2,7 @@ package sistemadecadastrohospitalar.AdmPage;
 
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JOptionPane;
+import sistemadecadastrohospitalar.MedPage.Med;
 
 /**
  *
@@ -23,6 +24,7 @@ public class Queue extends javax.swing.JFrame {
         queueTable = new javax.swing.JTable();
         btnArea = new javax.swing.JPanel();
         qBackBtn = new javax.swing.JButton();
+        atenderBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -51,21 +53,32 @@ public class Queue extends javax.swing.JFrame {
             }
         });
 
+        atenderBtn.setText("Atender");
+        atenderBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                atenderBtnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout btnAreaLayout = new javax.swing.GroupLayout(btnArea);
         btnArea.setLayout(btnAreaLayout);
         btnAreaLayout.setHorizontalGroup(
             btnAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(btnAreaLayout.createSequentialGroup()
-                .addGap(155, 155, 155)
+                .addGap(116, 116, 116)
+                .addComponent(atenderBtn)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(qBackBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(147, 147, 147))
+                .addGap(123, 123, 123))
         );
         btnAreaLayout.setVerticalGroup(
             btnAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnAreaLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(qBackBtn)
-                .addContainerGap())
+            .addGroup(btnAreaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(btnAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(qBackBtn)
+                    .addComponent(atenderBtn))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -100,6 +113,15 @@ public class Queue extends javax.swing.JFrame {
         setVisible(false);
     }//GEN-LAST:event_qBackBtnActionPerformed
 
+    private void atenderBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atenderBtnActionPerformed
+        // TODO add your handling code here:
+        int rowSelecionada = queueTable.getSelectedRow();
+        String cpf = (String)queueTable.getValueAt(rowSelecionada, 1);
+        Med med = new Med();
+        med.getPaciente(cpf);
+        med.setVisible(true);
+    }//GEN-LAST:event_atenderBtnActionPerformed
+
     public void insertQueueRow(Object dados) {
         
         int totalRows = queueTable.getRowCount();
@@ -109,7 +131,7 @@ public class Queue extends javax.swing.JFrame {
         for(int i=0; i<totalRows; i++ ) {
             System.out.println("result da linha atual: " + queueTable.getModel().getValueAt(i, 1));
             if(queueTable.getModel().getValueAt(i, 1).equals(result[1])) {
-                JOptionPane.showMessageDialog(null, "Paciente jé está na fila", "Erro", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Paciente já está na fila", "Erro", JOptionPane.ERROR_MESSAGE);
                 return;
             }
         }
@@ -117,6 +139,7 @@ public class Queue extends javax.swing.JFrame {
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton atenderBtn;
     private javax.swing.JPanel btnArea;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton qBackBtn;
