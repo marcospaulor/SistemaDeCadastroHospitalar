@@ -120,6 +120,8 @@ public class Queue extends javax.swing.JFrame {
         Med med = new Med();
         med.getPaciente(cpf);
         med.setVisible(true);
+        deleteLine(cpf);
+        setVisible(false);
     }//GEN-LAST:event_queueTableMouseClicked
 
     public void insertQueueRow(Object dados) {
@@ -139,6 +141,7 @@ public class Queue extends javax.swing.JFrame {
     public void verifyWhoLogged(String function){
         if(function == "med"){
             showQueue();
+            qBackBtn.setVisible(false);
         }
     }
     public ArrayList<QueueModel> createQueue(){
@@ -175,6 +178,21 @@ public class Queue extends javax.swing.JFrame {
             model.addRow(row);
         }
     }
+    
+    public void deleteLine(String cpf){
+        Connection conn;
+        Statement stmt;
+        ResultSet rs;
+        try {
+            conn = Conn.getConnection();
+            String query = "DELETE FROM `fila` WHERE cpf = "+cpf+"";
+            stmt = conn.createStatement();
+            stmt.executeUpdate(query);
+        } catch (Exception e) {
+            System.err.println("Erro: Aqui!!" + e);
+        }
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel btnArea;
     private javax.swing.JScrollPane jScrollPane1;
