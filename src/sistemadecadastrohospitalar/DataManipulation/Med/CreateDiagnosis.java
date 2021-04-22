@@ -11,7 +11,7 @@ import java.sql.SQLException;
 import sistemadecadastrohospitalar.DBConnection.Conn;
 /**
  *
- * @author marco
+ * @author Marcos Paulo
  */
 public class CreateDiagnosis {
     

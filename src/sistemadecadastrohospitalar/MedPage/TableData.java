@@ -7,7 +7,7 @@ package sistemadecadastrohospitalar.MedPage;
 
 /**
  *
- * @author marco
+ * @author Marcos Paulo
  */
 public class TableData extends javax.swing.JFrame {
 

@@ -478,9 +478,6 @@
                       <Events>
                         <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tableDiagnosticoMouseClicked"/>
                       </Events>
-                      <AuxValues>
-                        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="showDiagnosticos(cpf);"/>
-                      </AuxValues>
                     </Component>
                   </SubComponents>
                 </Container>
