@@ -208,9 +208,21 @@ public class OperacoesAdm {
     private int senha = 1;
     public Object addQueue(String nome, String cpf) {
         
-        Object[] queueData = new Object[]{nome, cpf, this.senha};
-        this.senha++;
-        return queueData;  
+        try {
+            String query = "INSERT INTO fila (nome, cpf, senha) VALUES" +
+                    "('" + nome + "','" + cpf + "','" + this.senha + "')";
+            statement = connection.createStatement();
+            statement.executeUpdate(query);
+            System.out.println("Paciente adicionado na fila!");
+            Object[] queueData = new Object[]{nome, cpf, this.senha};
+            this.senha++;
+            return queueData;  
+            
+        }catch(SQLException e){
+            System.out.println("Erro ao inserir na fila: " + e.getMessage());
+            return null;
+        }
+        
         
     }
     
@@ -232,6 +244,7 @@ public class OperacoesAdm {
             return 0;
         }
 }
+  
     
     
     

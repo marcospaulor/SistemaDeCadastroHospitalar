@@ -107,7 +107,6 @@ public class Queue extends javax.swing.JFrame {
         Object[] result = (Object[]) dados;
 
         for(int i=0; i<totalRows; i++ ) {
-            System.out.println("result da linha atual: " + queueTable.getModel().getValueAt(i, 1));
             if(queueTable.getModel().getValueAt(i, 1).equals(result[1])) {
                 JOptionPane.showMessageDialog(null, "Paciente jé está na fila", "Erro", JOptionPane.ERROR_MESSAGE);
                 return;
