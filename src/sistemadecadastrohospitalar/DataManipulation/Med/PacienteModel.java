@@ -7,7 +7,7 @@ package sistemadecadastrohospitalar.DataManipulation.Med;
 
 /**
  *
- * @author marco
+ * @author Marcos Paulo
  */
 public class PacienteModel {
     private final String nome;

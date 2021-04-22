@@ -11,7 +11,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
-import sistemadecadastrohospitalar.AdmPage.Queue;
 import sistemadecadastrohospitalar.DBConnection.Conn;
 import sistemadecadastrohospitalar.DataManipulation.Med.CreateDiagnosis;
 import sistemadecadastrohospitalar.DataManipulation.Med.DiagnosticoModelTable;
@@ -19,7 +18,7 @@ import sistemadecadastrohospitalar.DataManipulation.Med.PacienteModel;
 
 /**
  *
- * @author marco
+ * @author Marcos Paulo
  */
 public class Med extends javax.swing.JFrame {
     
@@ -148,7 +147,7 @@ public class Med extends javax.swing.JFrame {
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(11, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder("Diagnóstico"));
@@ -268,7 +267,6 @@ public class Med extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        showDiagnosticos(cpf);
         tableDiagnostico.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tableDiagnosticoMouseClicked(evt);
@@ -362,7 +360,7 @@ public class Med extends javax.swing.JFrame {
 
     private void salvarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salvarBtnActionPerformed
         // TODO add your handling code here:
-        //String cpf_fk = cpf;
+        
         String cpf_fk = cpf;
         if(isAnyEmptyFields()){
             
@@ -372,6 +370,9 @@ public class Med extends javax.swing.JFrame {
                     ,sintomasTA.getText() ,diagnosticoTA.getText(), prescricaoTA.getText());
         }
         cleanFields();
+        ((DefaultTableModel) tableDiagnostico.getModel()).setRowCount(0);
+        getPaciente(cpf);
+        
     }//GEN-LAST:event_salvarBtnActionPerformed
 
     private void tableDiagnosticoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableDiagnosticoMouseClicked
@@ -389,8 +390,6 @@ public class Med extends javax.swing.JFrame {
 
     private void voltarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarBtnActionPerformed
         // TODO add your handling code here:
-        Queue fila = new Queue();
-        fila.setVisible(true);
         dispose();
     }//GEN-LAST:event_voltarBtnActionPerformed
   
@@ -414,6 +413,7 @@ public class Med extends javax.swing.JFrame {
                 diagnosticoList.add(model);
             }
             
+            Conn.closeConnection();
             
         } catch (SQLException e) {
             System.err.println("ERRO: " + e);
