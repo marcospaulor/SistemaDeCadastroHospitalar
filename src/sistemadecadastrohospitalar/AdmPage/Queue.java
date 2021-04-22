@@ -2,6 +2,7 @@ package sistemadecadastrohospitalar.AdmPage;
 
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JOptionPane;
+import sistemadecadastrohospitalar.MedPage.Med;
 
 /**
  *
@@ -40,6 +41,11 @@ public class Queue extends javax.swing.JFrame {
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
+            }
+        });
+        queueTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                queueTableMouseClicked(evt);
             }
         });
         jScrollPane1.setViewportView(queueTable);
@@ -99,6 +105,15 @@ public class Queue extends javax.swing.JFrame {
     private void qBackBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_qBackBtnActionPerformed
         setVisible(false);
     }//GEN-LAST:event_qBackBtnActionPerformed
+
+    private void queueTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_queueTableMouseClicked
+        // TODO add your handling code here:
+        int rowSelecionada = queueTable.getSelectedRow();
+        String cpf = (String)queueTable.getValueAt(rowSelecionada, 1);
+        Med med = new Med();
+        med.getPaciente(cpf);
+        med.setVisible(true);
+    }//GEN-LAST:event_queueTableMouseClicked
 
     public void insertQueueRow(Object dados) {
         

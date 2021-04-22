@@ -11,6 +11,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
+import sistemadecadastrohospitalar.AdmPage.Queue;
 import sistemadecadastrohospitalar.DBConnection.Conn;
 import sistemadecadastrohospitalar.DataManipulation.Med.CreateDiagnosis;
 import sistemadecadastrohospitalar.DataManipulation.Med.DiagnosticoModelTable;
@@ -70,8 +71,8 @@ public class Med extends javax.swing.JFrame {
         jScrollPane4 = new javax.swing.JScrollPane();
         tableDiagnostico = new javax.swing.JTable();
         jPanel9 = new javax.swing.JPanel();
-        salvarBTN = new javax.swing.JButton();
-        gerarBTN = new javax.swing.JButton();
+        salvarBtn = new javax.swing.JButton();
+        voltarBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -294,16 +295,21 @@ public class Med extends javax.swing.JFrame {
 
         jPanel9.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        salvarBTN.setText("Salvar");
-        salvarBTN.addActionListener(new java.awt.event.ActionListener() {
+        salvarBtn.setText("Salvar");
+        salvarBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                salvarBTNActionPerformed(evt);
+                salvarBtnActionPerformed(evt);
             }
         });
-        jPanel9.add(salvarBTN);
+        jPanel9.add(salvarBtn);
 
-        gerarBTN.setText("Gerar arquivo");
-        jPanel9.add(gerarBTN);
+        voltarBtn.setText("Voltar");
+        voltarBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                voltarBtnActionPerformed(evt);
+            }
+        });
+        jPanel9.add(voltarBtn);
 
         javax.swing.GroupLayout panelPrincipalLayout = new javax.swing.GroupLayout(panelPrincipal);
         panelPrincipal.setLayout(panelPrincipalLayout);
@@ -354,7 +360,7 @@ public class Med extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void salvarBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salvarBTNActionPerformed
+    private void salvarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salvarBtnActionPerformed
         // TODO add your handling code here:
         //String cpf_fk = cpf;
         String cpf_fk = cpf;
@@ -366,7 +372,7 @@ public class Med extends javax.swing.JFrame {
                     ,sintomasTA.getText() ,diagnosticoTA.getText(), prescricaoTA.getText());
         }
         cleanFields();
-    }//GEN-LAST:event_salvarBTNActionPerformed
+    }//GEN-LAST:event_salvarBtnActionPerformed
 
     private void tableDiagnosticoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableDiagnosticoMouseClicked
         // TODO add your handling code here:
@@ -380,6 +386,13 @@ public class Med extends javax.swing.JFrame {
         frame.setLabel(temp, pressao, sintoma, diag);
         frame.setVisible(true);
     }//GEN-LAST:event_tableDiagnosticoMouseClicked
+
+    private void voltarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarBtnActionPerformed
+        // TODO add your handling code here:
+        Queue fila = new Queue();
+        fila.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_voltarBtnActionPerformed
   
     public ArrayList<DiagnosticoModelTable> diagnosticoList(String cpf){
         
@@ -484,7 +497,6 @@ public class Med extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextArea diagnosticoTA;
-    private javax.swing.JButton gerarBTN;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -502,11 +514,12 @@ public class Med extends javax.swing.JFrame {
     private javax.swing.JPanel panelPrincipal;
     private javax.swing.JTextArea prescricaoTA;
     private javax.swing.JFormattedTextField pressaoFTF;
-    private javax.swing.JButton salvarBTN;
+    private javax.swing.JButton salvarBtn;
     private javax.swing.JTextArea sintomasTA;
     private javax.swing.JTable tableDiagnostico;
     private javax.swing.JFormattedTextField temperaturaFTF;
     private javax.swing.JLabel tipoSanguineLB;
+    private javax.swing.JButton voltarBtn;
     // End of variables declaration//GEN-END:variables
     private boolean isAnyEmptyFields() {
         return pressaoFTF.getText().isEmpty() || temperaturaFTF.getText().isEmpty() || 
