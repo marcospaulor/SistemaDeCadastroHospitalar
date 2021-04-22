@@ -5,13 +5,23 @@
  */
 package sistemadecadastrohospitalar.MedPage;
 
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
+import sistemadecadastrohospitalar.DBConnection.Conn;
 import sistemadecadastrohospitalar.DataManipulation.Med.CreateDiagnosis;
+import sistemadecadastrohospitalar.DataManipulation.Med.DiagnosticoModelTable;
+import sistemadecadastrohospitalar.DataManipulation.Med.PacienteModel;
 
 /**
  *
  * @author marco
  */
 public class Med extends javax.swing.JFrame {
+    
     private String cpf;
     /**
      * Creates new form Med
@@ -21,6 +31,12 @@ public class Med extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         setTitle("Diagnóstico (SMH)");
+    }
+    
+    public void getPaciente(String cpf){
+        this.cpf = cpf;
+        showDiagnosticos(cpf);
+        changeLabels(cpf);
     }
 
     /**
@@ -48,11 +64,11 @@ public class Med extends javax.swing.JFrame {
         jPanel8 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         prescricaoTA = new javax.swing.JTextArea();
-        pacienteL = new javax.swing.JLabel();
+        pacienteLB = new javax.swing.JLabel();
         tipoSanguineLB = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tableDiagnostico = new javax.swing.JTable();
         jPanel9 = new javax.swing.JPanel();
         salvarBTN = new javax.swing.JButton();
         gerarBTN = new javax.swing.JButton();
@@ -182,8 +198,10 @@ public class Med extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        pacienteL.setText("Paciente name");
+        pacienteLB.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        pacienteLB.setText("Paciente name");
 
+        tipoSanguineLB.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         tipoSanguineLB.setText("Tipo Sanguíneo");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -202,7 +220,7 @@ public class Med extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addGap(51, 51, 51)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(pacienteL)
+                    .addComponent(pacienteLB)
                     .addComponent(tipoSanguineLB))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 275, Short.MAX_VALUE)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -219,7 +237,7 @@ public class Med extends javax.swing.JFrame {
                         .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(pacienteL)
+                        .addComponent(pacienteLB)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(tipoSanguineLB)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -233,15 +251,29 @@ public class Med extends javax.swing.JFrame {
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Diagnósticos"));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tableDiagnostico.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Temperatura", "Pressão Arterial", "Sintomas", "Diagnóstico"
+                "Temp.", "P.A.", "Sintomas", "Diagnóstico"
             }
-        ));
-        jScrollPane4.setViewportView(jTable1);
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        showDiagnosticos(cpf);
+        tableDiagnostico.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tableDiagnosticoMouseClicked(evt);
+            }
+        });
+        jScrollPane4.setViewportView(tableDiagnostico);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -335,10 +367,86 @@ public class Med extends javax.swing.JFrame {
         }
         cleanFields();
     }//GEN-LAST:event_salvarBTNActionPerformed
+
+    private void tableDiagnosticoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableDiagnosticoMouseClicked
+        // TODO add your handling code here:
+        int rowSelecionada = tableDiagnostico.getSelectedRow();
+        int temp = (Integer)tableDiagnostico.getValueAt(rowSelecionada, 0);
+        String pressao = (String)tableDiagnostico.getValueAt(rowSelecionada, 1);
+        String sintoma = (String)tableDiagnostico.getValueAt(rowSelecionada, 2);
+        String diag = (String)tableDiagnostico.getValueAt(rowSelecionada, 3);
+        
+        TableData frame = new TableData();
+        frame.setLabel(temp, pressao, sintoma, diag);
+        frame.setVisible(true);
+    }//GEN-LAST:event_tableDiagnosticoMouseClicked
+  
+    public ArrayList<DiagnosticoModelTable> diagnosticoList(String cpf){
+        
+        ArrayList<DiagnosticoModelTable> diagnosticoList = new ArrayList<>();
+        Connection connection;
+        Statement stmt;
+        ResultSet rs;
+        
+        try {
+            connection = Conn.getConnection();
+            String query = "SELECT temperatura, pressao, sintoma, diagnostico FROM diagnostico WHERE cpf_fk = "+ cpf +"";
+            stmt = connection.createStatement();
+            rs = stmt.executeQuery(query);
+            
+            DiagnosticoModelTable model;
+            
+            while(rs.next()){
+                model = new DiagnosticoModelTable(rs.getInt("temperatura"), rs.getString("pressao"), rs.getString("sintoma"), rs.getString("diagnostico"));
+                diagnosticoList.add(model);
+            }
+            
+            
+        } catch (SQLException e) {
+            System.err.println("ERRO: " + e);
+        }
+        return diagnosticoList;
+    }
     
-    public void getPaciente(String cpf){
-        this.cpf = cpf;
-        System.out.println(cpf+" - Este CPF é da é do método getPaciente");
+    public void showDiagnosticos(String cpf){
+        ArrayList<DiagnosticoModelTable> list = diagnosticoList(cpf);
+        DefaultTableModel model = (DefaultTableModel)tableDiagnostico.getModel();
+        Object [] row = new Object[4];
+        
+        for (int i = 0; i < list.size(); i++) {
+            row[0] = list.get(i).getTemperatura();
+            row[1] = list.get(i).getPressao();
+            row[2] = list.get(i).getSintoma();
+            row[3] = list.get(i).getDiagnostico();
+            model.addRow(row);
+        }
+        
+    }
+    
+    public void changeLabels(String cpf){
+        Connection conn;
+        Statement stmt;
+        ResultSet rs;
+        try {
+            //stmt = conn.createStatement();
+            //String query = "SELECT nome, tipo_sang FROM pacientes WHERE cpf = "+cpf+"";
+            //ResultSet rs = stmt.executeQuery(query);
+            //rs.first();
+            conn = Conn.getConnection();
+            String query = "SELECT nome, tipo_sang FROM pacientes WHERE cpf = "+ cpf +"";
+            stmt = conn.createStatement();
+            rs = stmt.executeQuery(query);
+            
+            PacienteModel model;
+            while (rs.next()) {
+                model = new PacienteModel(rs.getString("nome"),rs.getString("tipo_sang"));
+                pacienteLB.setText(model.getNome());
+                tipoSanguineLB.setText(model.getTipo_sang());
+    
+            }
+        } catch (SQLException e) {
+            System.err.println("Erro: " + e);
+        }
     }
     /**
      * @param args the command line arguments
@@ -390,13 +498,13 @@ public class Med extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JLabel pacienteL;
+    private javax.swing.JLabel pacienteLB;
     private javax.swing.JPanel panelPrincipal;
     private javax.swing.JTextArea prescricaoTA;
     private javax.swing.JFormattedTextField pressaoFTF;
     private javax.swing.JButton salvarBTN;
     private javax.swing.JTextArea sintomasTA;
+    private javax.swing.JTable tableDiagnostico;
     private javax.swing.JFormattedTextField temperaturaFTF;
     private javax.swing.JLabel tipoSanguineLB;
     // End of variables declaration//GEN-END:variables

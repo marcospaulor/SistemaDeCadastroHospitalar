@@ -17,16 +17,16 @@ public class CreateDiagnosis {
     
     public void insert( String cpf_fk,int temperatura,String pressao,String sintoma
     ,String diagnostico,String prescricao){
-        Statement statement;
+        Statement stmt;
         Connection connection = Conn.getConnection();
         try{
             String query = "INSERT INTO diagnostico(cpf_fk, temperatura,pressao, sintoma, diagnostico, prescricao)"
                     + " VALUES ('"+cpf_fk+"','"+temperatura+"','"+pressao+"','"+sintoma+"','"+diagnostico+"','"+prescricao+"')";
-            statement = connection.createStatement();
-            statement.executeUpdate(query);
-            Conn.getConnection();
+            stmt = connection.createStatement();
+            stmt.executeUpdate(query);
+            Conn.closeConnection();
         } catch (SQLException e){
-            System.err.println("Erro: DAQUI " + e.getMessage());
+            System.err.println("Erro:" + e.getMessage());
         }
     }
 }
