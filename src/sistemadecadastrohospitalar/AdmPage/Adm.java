@@ -345,7 +345,7 @@ public class Adm extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     OperacoesAdm operacoesadm = new OperacoesAdm();
-    Queue fila = new Queue();
+    
     
     private void insertBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_insertBtnActionPerformed
 
@@ -444,13 +444,14 @@ public class Adm extends javax.swing.JFrame {
 
     private void addBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBtnActionPerformed
         
-        Object queuedata = operacoesadm.addQueue(pNameTF.getText(), pCPFTF.getText());
-        fila.insertQueueRow(queuedata);
+        operacoesadm.addQueueBD(pNameTF.getText(), pCPFTF.getText());
                
     }//GEN-LAST:event_addBtnActionPerformed
 
     private void queueBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_queueBtnActionPerformed
         
+        Queue fila = new Queue();
+        fila.showQueue();
         fila.setVisible(true);
         
     }//GEN-LAST:event_queueBtnActionPerformed

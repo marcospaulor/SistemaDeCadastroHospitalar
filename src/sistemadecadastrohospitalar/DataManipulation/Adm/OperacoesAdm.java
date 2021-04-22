@@ -205,25 +205,20 @@ public class OperacoesAdm {
         } 
     }
     
-    private int senha = 1;
-    public Object addQueue(String nome, String cpf) {
+
+    public void addQueueBD(String nome, String cpf) {
         
         try {
-            String query = "INSERT INTO fila (nome, cpf, senha) VALUES" +
-                    "('" + nome + "','" + cpf + "','" + this.senha + "')";
+            String query = "INSERT INTO fila (nome, cpf) VALUES" +
+                    "('" + nome + "','" + cpf + "')";
             statement = connection.createStatement();
             statement.executeUpdate(query);
             System.out.println("Paciente adicionado na fila!");
-            Object[] queueData = new Object[]{nome, cpf, this.senha};
-            this.senha++;
-            return queueData;  
             
         }catch(SQLException e){
-            System.out.println("Erro ao inserir na fila: " + e.getMessage());
-            return null;
+            System.out.println("Erro ao inserir na fila<>: " + e.getMessage());
         }
-        
-        
+  
     }
     
     public int ageCalc(String dataNasc) {
@@ -243,11 +238,8 @@ public class OperacoesAdm {
             System.out.println("Erro ao calcular idade: " + e.getMessage());
             return 0;
         }
-}
-  
-    
-    
-    
+    }
+   
 }    
 
     
